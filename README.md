@@ -56,6 +56,27 @@ Les résultats sont aussi enregistrés dans le sous-dossier **`sorties/`** du do
 - **La page ne s'ouvre pas** → ouvre ton navigateur et va sur <http://127.0.0.1:7860>.
 - **Transcription farfelue** → force la langue sur *Français* et passe la qualité sur *Précise*.
 
+## Où vont mes enregistrements ?
+
+L'application est un petit serveur web qui tourne **sur ton Mac uniquement** (adresse
+`127.0.0.1`, injoignable depuis l'extérieur). Le navigateur ne sert que d'écran : quand tu
+déposes un fichier, il est envoyé à ce serveur local, pas sur internet.
+
+Trois endroits où ton audio se retrouve, tous sur ton ordinateur :
+
+| Où | Quoi | Durée de vie |
+|---|---|---|
+| Le fichier d'origine, là où il était | intact, jamais modifié | — |
+| Sous-dossier **`sorties/`** de l'application | audio nettoyé, `.txt`, `.srt` | gardés jusqu'à ce que tu les supprimes |
+| Dossier temporaire du Mac | copies de travail faites par Gradio | supprimées automatiquement après 30 min |
+
+**Rien n'est envoyé sur internet**, ni l'audio ni le texte. La télémétrie que Gradio active
+par défaut est explicitement coupée dans `app.py`. Le seul accès réseau de l'application est
+le téléchargement du modèle de reconnaissance vocale, une fois pour toutes, au premier usage.
+
+Pour tout effacer : vide le dossier `sorties/`, et les copies temporaires partent toutes
+seules (ou immédiatement en fermant la fenêtre noire et en relançant l'application).
+
 ## Sous le capot
 
 - Transcription : [faster-whisper](https://github.com/SYSTRAN/faster-whisper) (modèle Whisper d'OpenAI), en local sur le processeur.

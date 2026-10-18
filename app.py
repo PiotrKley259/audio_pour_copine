@@ -1,7 +1,11 @@
 """Transcripteur audio — interface locale.
 
 Dépose un fichier audio, l'app enlève le bruit de fond et écrit la transcription.
-Tout se passe sur cet ordinateur : aucun fichier n'est envoyé sur internet.
+
+Le serveur n'écoute que sur 127.0.0.1 : les enregistrements ne quittent pas la
+machine. La télémétrie de Gradio (activée par défaut, vers api.gradio.app) est
+coupée, ce qui désactive aussi celle de Hugging Face au téléchargement du modèle.
+Seul accès réseau restant : le téléchargement du modèle Whisper, une seule fois.
 """
 
 from __future__ import annotations
@@ -97,11 +101,18 @@ def traiter(
     )
 
 
-with gr.Blocks(title="Transcripteur audio", theme=gr.themes.Soft()) as demo:
+with gr.Blocks(
+    title="Transcripteur audio",
+    theme=gr.themes.Soft(),
+    analytics_enabled=False,  # pas de télémétrie vers api.gradio.app
+    # Gradio recopie chaque fichier déposé dans un dossier temporaire et ne les
+    # supprime jamais par défaut. On purge les copies de plus de 30 minutes.
+    delete_cache=(1800, 1800),
+) as demo:
     gr.Markdown(
         "# 🎙️ Transcripteur audio\n"
         "Dépose un enregistrement : le bruit de fond est enlevé et le texte est écrit pour toi.\n"
-        "*Tout se passe sur cet ordinateur, rien n'est envoyé sur internet.*"
+        "*Tout se passe sur cet ordinateur : tes enregistrements ne sont envoyés nulle part.*"
     )
 
     with gr.Row():
@@ -149,4 +160,4 @@ with gr.Blocks(title="Transcripteur audio", theme=gr.themes.Soft()) as demo:
     )
 
 if __name__ == "__main__":
-    demo.launch(inbrowser=True, show_api=False)
+    demo.launch(server_name="127.0.0.1", inbrowser=True, show_api=False)
