@@ -198,8 +198,6 @@ with gr.Blocks(
                 label="Fichiers à télécharger", height=110, elem_id="fichiers"
             )
 
-    gr.HTML('<div id="pied">Fait avec amour</div>')
-
     bouton.click(
         traiter,
         inputs=[entree, nettoyer, force, qualite, langue],

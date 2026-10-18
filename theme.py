@@ -244,13 +244,6 @@ button#bouton-transcrire:hover { border-color: #372d2b !important; }
 }
 #notes p strong { color: #2e2522; font-weight: 500; }
 
-/* ---- Pied de page ---- */
-#pied {
-  text-align: center; margin-top: 70px; padding-top: 26px;
-  border-top: 1px solid #f1e7e1;
-  font-size: .76rem; letter-spacing: .24em;
-  text-transform: uppercase; color: #8a736a;
-}
 
 /* ---- La barre de progression reprend l'accent ---- */
 .progress-bar, .progress-level-inner { background: #c45a76 !important; }
