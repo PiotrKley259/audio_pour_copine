@@ -79,6 +79,7 @@ theme = gr.themes.Base(
     input_border_color_focus="#c45a76",
     input_radius="0px",
     slider_color="#c45a76",
+    loader_color="#c45a76",
     checkbox_background_color_selected="#c45a76",
     checkbox_border_color_selected="#c45a76",
     checkbox_border_radius="0px",
@@ -245,6 +246,51 @@ button#bouton-transcrire:hover { border-color: #372d2b !important; }
 #notes p strong { color: #2e2522; font-weight: 500; }
 
 
-/* ---- La barre de progression reprend l'accent ---- */
-.progress-bar, .progress-level-inner { background: #c45a76 !important; }
+/* ---- État « en cours de traitement » ----------------------------------
+   Gradio empile par-dessus le composant un voile translucide, une barre
+   animée, un compteur technique et son logo orange : tout cela se mélangeait
+   avec l'onglet rose souligné juste au-dessus. On rend le voile opaque, on
+   retire le logo de marque, et on redonne au message sa typographie. */
+#zone-texte .wrap, #zone-texte-minute .wrap {
+  background: #fdfaf8 !important;
+  backdrop-filter: none !important;
+  gap: 14px !important;
+}
+/* Le logo Gradio, orange, n'a rien à faire dans cette palette. */
+#zone-texte .wrap > div > svg, #zone-texte-minute .wrap > div > svg,
+#zone-texte .wrap .margin, #zone-texte-minute .wrap .margin {
+  display: none !important;
+}
+/* Le compteur « 11.9/3.4s » / « queue: 1/1 » ne veut rien dire pour qui
+   attend sa transcription : seul le message en français est utile. */
+.progress-text.meta-text { display: none !important; }
+
+/* Le message de progression. Attention : `.progress-level-inner` ne porte
+   que du texte — lui donner un fond plein rendait le message illisible,
+   noyé dans le rose. Seul `.progress-bar` est l'indicateur. */
+.progress-level-inner {
+  background: transparent !important;
+  font-family: 'Jost', sans-serif !important;
+  font-size: 1rem !important;
+  font-weight: 300 !important;
+  color: #4e403c !important;
+  text-align: center !important;
+  max-width: 420px !important;
+  line-height: 1.6 !important;
+  margin: 0 auto 14px !important;
+}
+.progress-level { gap: 10px !important; }
+
+/* L'indicateur lui-même : un filet rose qui se remplit. */
+.progress-bar-wrap {
+  border: 1px solid #e5d6ce !important;
+  background: #fdfaf8 !important;
+  border-radius: 0 !important;
+  width: 240px !important;
+  height: 3px !important;
+}
+.progress-bar { background-color: #c45a76 !important; border: none !important; }
+
+/* Le voile animé derrière le message, en rose très dilué. */
+.eta-bar { background: #f5cfd8 !important; opacity: .35 !important; }
 """

@@ -77,7 +77,7 @@ def traiter(
     def avance(ratio: float) -> None:
         progress(0.15 + 0.8 * ratio, desc="Transcription en cours…")
 
-    progress(0.15, desc="Transcription en cours… (le 1er lancement télécharge le modèle)")
+    progress(0.15, desc="Préparation du modèle…")
     texte, segments = transcribe(
         samples,
         SAMPLE_RATE,
@@ -94,7 +94,7 @@ def traiter(
     chemin_txt.write_text(texte, encoding="utf-8")
     chemin_srt.write_text(to_srt(segments), encoding="utf-8")
 
-    progress(1.0, desc="Terminé ✅")
+    progress(1.0, desc="Terminé")
     return (
         texte,
         to_timestamped(segments),
@@ -169,10 +169,10 @@ with gr.Blocks(
                 """
                 <div id="notes">
                   <p><strong>Formats</strong> — mp3, m4a, wav, et même les vidéos.</p>
-                  <p><strong>Première fois</strong> — le modèle se télécharge, comptez
+                  <p><strong>Première fois</strong> — le modèle se télécharge, compte
                      quelques minutes. Ensuite tout va vite.</p>
-                  <p><strong>Si le texte se trompe</strong> — ouvrez les réglages,
-                     choisissez Français et la qualité Précise.</p>
+                  <p><strong>Si le texte se trompe</strong> — ouvre les réglages,
+                     choisis Français et la qualité Précise.</p>
                 </div>
                 """
             )
