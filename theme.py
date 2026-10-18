@@ -39,25 +39,25 @@ theme = gr.themes.Base(
     font=(gr.themes.GoogleFont("Jost"), "Helvetica", "sans-serif"),
     font_mono=(gr.themes.GoogleFont("Jost"), "ui-monospace", "monospace"),
     radius_size=gr.themes.sizes.radius_none,
-    text_size=gr.themes.sizes.text_md,
+    text_size=gr.themes.sizes.text_lg,
     spacing_size=gr.themes.sizes.spacing_lg,
 ).set(
     body_background_fill="#fdfaf8",
     body_background_fill_dark="#241d1c",
     body_text_color="#372d2b",
     body_text_color_dark="#faf4f0",
-    body_text_color_subdued="#8a736a",
+    body_text_color_subdued="#6b5852",
     # Pas de cartes : des surfaces nues séparées par des filets.
     block_background_fill="transparent",
     block_background_fill_dark="transparent",
     block_border_width="0px",
     block_shadow="none",
     block_label_background_fill="transparent",
-    block_label_text_color="#ab9389",
-    block_label_text_size="11px",
+    block_label_text_color="#6b5852",
+    block_label_text_size="13px",
     block_label_text_weight="500",
-    block_title_text_color="#ab9389",
-    block_title_text_size="11px",
+    block_title_text_color="#6b5852",
+    block_title_text_size="13px",
     block_title_text_weight="500",
     panel_background_fill="transparent",
     panel_border_width="0px",
@@ -117,8 +117,8 @@ gradio-app, gradio-app > div, .gradio-container > .main,
 footer { display: none !important; }
 
 /* ---- Bandeau : l'emblème, le titre déco, un filet ---- */
-#entete { text-align: center; padding: 64px 0 36px; }
-#entete .embleme { margin: 0 auto 26px; display: block; }
+#entete { text-align: center; padding: 56px 0 30px; }
+#entete .embleme { margin: 0 auto 24px; display: block; }
 #entete h1 {
   font-family: 'Poiret One', 'Jost', sans-serif;
   font-size: clamp(2.4rem, 6vw, 3.6rem);
@@ -127,12 +127,12 @@ footer { display: none !important; }
 }
 #entete h1 em { font-style: normal; color: #c45a76; }
 #entete .accroche {
-  margin: 20px auto 0; max-width: 460px;
-  font-size: .95rem; font-weight: 300; line-height: 1.7; color: #8a736a;
+  margin: 0 auto; max-width: 520px;
+  font-size: 1.1rem; font-weight: 300; line-height: 1.75; color: #6b5852;
 }
 #entete .surtitre, .etiquette {
-  font-size: .68rem; font-weight: 500;
-  letter-spacing: .28em; text-transform: uppercase; color: #cdb8ae;
+  font-size: .78rem; font-weight: 500;
+  letter-spacing: .26em; text-transform: uppercase; color: #8a736a;
 }
 #entete .surtitre { display: block; margin-bottom: 18px; }
 #filet-haut { height: 1px; background: #f1e7e1; margin: 8px 0 44px; }
@@ -141,10 +141,10 @@ footer { display: none !important; }
 span[data-testid="block-info"], .gradio-container label span,
 #composant-audio span, .block > label > span {
   text-transform: uppercase !important;
-  letter-spacing: .2em !important;
-  font-size: .66rem !important;
+  letter-spacing: .18em !important;
+  font-size: .8rem !important;
   font-weight: 500 !important;
-  color: #ab9389 !important;
+  color: #6b5852 !important;
 }
 
 /* ---- Colonnes séparées par un filet vertical, comme une mise en page de magazine ---- */
@@ -183,14 +183,17 @@ span[data-testid="block-info"], .gradio-container label span,
 }
 #composant-audio:hover { border-color: #c45a76 !important; }
 #composant-audio .wrap { min-height: 190px !important; }
+#composant-audio .wrap, #composant-audio .wrap * {
+  font-size: 1.02rem !important; color: #4e403c !important;
+}
 
 /* ---- Le bouton : plein, carré, en capitales espacées ---- */
 button#bouton-transcrire {
   width: 100%;
   border-radius: 0 !important;
-  font-size: .76rem !important;
+  font-size: .92rem !important;
   font-weight: 500 !important;
-  letter-spacing: .26em !important;
+  letter-spacing: .24em !important;
   text-transform: uppercase !important;
   padding: 19px 20px !important;
   border: 1px solid #c45a76 !important;
@@ -206,9 +209,9 @@ button#bouton-transcrire:hover { border-color: #372d2b !important; }
 .tab-nav button, div[role="tablist"] button {
   background: none !important; border: none !important;
   border-radius: 0 !important; padding: 0 0 12px !important;
-  font-size: .68rem !important; font-weight: 500 !important;
-  letter-spacing: .22em !important; text-transform: uppercase !important;
-  color: #cdb8ae !important;
+  font-size: .84rem !important; font-weight: 500 !important;
+  letter-spacing: .2em !important; text-transform: uppercase !important;
+  color: #6b5852 !important;
 }
 .tab-nav button.selected, div[role="tablist"] button.selected {
   color: #c45a76 !important;
@@ -218,11 +221,11 @@ button#bouton-transcrire:hover { border-color: #372d2b !important; }
 /* ---- Le texte transcrit : lecture confortable, pas un champ de formulaire ---- */
 #zone-texte textarea {
   border: none !important; background: transparent !important;
-  font-size: 1.02rem !important; font-weight: 300 !important;
-  line-height: 1.85 !important; color: #372d2b !important;
-  padding: 26px 0 !important; resize: none !important;
+  font-size: 1.3rem !important; font-weight: 300 !important;
+  line-height: 1.75 !important; color: #2e2522 !important;
+  padding: 28px 0 !important; resize: none !important;
 }
-#zone-texte textarea::placeholder { color: #cdb8ae !important; font-style: italic; }
+#zone-texte textarea::placeholder { color: #ab9389 !important; font-style: italic; }
 
 /* ---- Sorties : des blocs compacts, séparés par un filet ---- */
 #audio-propre, #fichiers {
@@ -236,17 +239,17 @@ button#bouton-transcrire:hover { border-color: #372d2b !important; }
 /* ---- Notes de bas de colonne ---- */
 #notes { margin-top: 34px; padding-top: 22px; border-top: 1px solid #f1e7e1; }
 #notes p {
-  font-size: .78rem; font-weight: 300; line-height: 1.75;
-  color: #ab9389; margin: 0 0 12px;
+  font-size: .94rem; font-weight: 300; line-height: 1.7;
+  color: #4e403c; margin: 0 0 14px;
 }
-#notes p strong { color: #8a736a; font-weight: 500; }
+#notes p strong { color: #2e2522; font-weight: 500; }
 
 /* ---- Pied de page ---- */
 #pied {
   text-align: center; margin-top: 70px; padding-top: 26px;
   border-top: 1px solid #f1e7e1;
-  font-size: .66rem; letter-spacing: .26em;
-  text-transform: uppercase; color: #cdb8ae;
+  font-size: .76rem; letter-spacing: .24em;
+  text-transform: uppercase; color: #8a736a;
 }
 
 /* ---- La barre de progression reprend l'accent ---- */

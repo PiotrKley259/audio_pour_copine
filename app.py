@@ -130,8 +130,6 @@ with gr.Blocks(
             <path d="M33 45c0 7.2 5.8 13 13 13s13-5.8 13-13"/>
             <path d="M46 58v9M38 67h16"/>
           </svg>
-          <span class="surtitre">Transcription &amp; nettoyage</span>
-          <h1>Le studio de <em>ta voix</em></h1>
           <p class="accroche">
             Dépose un enregistrement. Le bruit de fond s'efface,
             les mots s'écrivent. Tout reste sur ton ordinateur.
