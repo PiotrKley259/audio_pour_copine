@@ -27,6 +27,12 @@ if ! ./.venv/bin/python -m pip install -r requirements.txt; then
   exit 1
 fi
 
+# macOS met en quarantaine tout fichier téléchargé, ce qui déclenche l'alerte
+# « Apple n'a pas pu confirmer... » à chaque lancement. Puisque l'utilisatrice
+# vient d'autoriser explicitement ce dossier, on lève la quarantaine dessus
+# pour que « Transcripteur.command » s'ouvre ensuite d'un simple double-clic.
+xattr -dr com.apple.quarantine . 2>/dev/null
+
 echo
 echo "✅ Installation terminée !"
 echo "   Tu peux maintenant double-cliquer sur « Transcripteur.command »."

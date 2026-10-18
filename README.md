@@ -10,13 +10,19 @@ Tout se passe sur ton ordinateur : **aucun fichier n'est envoyé sur internet**,
 
 1. En haut de cette page, clique sur le bouton vert **« Code »** puis **« Download ZIP »**.
 2. Ouvre le fichier téléchargé pour le décompresser, et place le dossier où tu veux (par exemple dans *Documents*).
-3. Dans le dossier, **clic droit** sur **`installer.command`** → **« Ouvrir »** → **« Ouvrir »** à nouveau si le Mac demande confirmation.
-   *(Le clic droit est nécessaire seulement la première fois : macOS se méfie des fichiers téléchargés.)*
-4. Une fenêtre noire s'ouvre et installe ce qu'il faut. Ça prend quelques minutes. Quand tu vois **« Installation terminée ! »**, tu peux la fermer.
+3. Double-clique sur **`installer.command`**.
+4. 🔒 **macOS va refuser une première fois**, avec le message *« Apple n'a pas pu confirmer que « installer.command » ne contenait pas de logiciel malveillant »*. C'est normal : le Mac se méfie de tout fichier téléchargé. Pour l'autoriser :
+   - clique sur **« Terminé »** (⚠️ **pas** « Déplacer vers la corbeille ») ;
+   - ouvre **Réglages Système** → **Confidentialité et sécurité** ;
+   - descends jusqu'à la section **Sécurité** : la ligne *« installer.command » a été bloqué…* apparaît, avec un bouton **« Ouvrir quand même »** ;
+   - clique dessus, confirme avec Touch ID ou ton mot de passe, puis **« Ouvrir »**.
+5. Une fenêtre noire s'ouvre et installe ce qu'il faut. Ça prend quelques minutes. Quand tu vois **« Installation terminée ! »**, tu peux la fermer.
+
+*Cette autorisation n'est à donner qu'une seule fois : l'installateur débloque le dossier au passage, donc l'application se lancera ensuite d'un simple double-clic.*
 
 ## Utilisation (à chaque fois)
 
-1. **Clic droit** sur **`Transcripteur.command`** → **« Ouvrir »** (ensuite un simple double-clic suffira).
+1. Double-clique sur **`Transcripteur.command`**.
 2. La page s'ouvre toute seule dans ton navigateur.
 3. Glisse ton fichier audio dans le cadre, puis clique sur **« Transcrire »**.
 4. Récupère le texte (bouton copier), ou télécharge le `.txt` et les sous-titres `.srt`.
@@ -44,7 +50,8 @@ Les résultats sont aussi enregistrés dans le sous-dossier **`sorties/`** du do
 ## Ça ne marche pas ?
 
 - **« Python n'est pas installé »** → installe-le depuis <https://www.python.org/downloads/macos/> puis relance `installer.command`.
-- **Le Mac refuse d'ouvrir le fichier** → utilise bien le **clic droit → Ouvrir** (pas le double-clic) la première fois.
+- **« Apple n'a pas pu confirmer… »** → c'est la protection des fichiers téléchargés : suis l'étape 4 de l'installation (Réglages Système → Confidentialité et sécurité → **« Ouvrir quand même »**).
+- **`Transcripteur.command` est encore bloqué** → relance `installer.command` : il lève le blocage sur tout le dossier.
 - **« L'installation des composants a échoué »** → vérifie la connexion internet et relance `installer.command`.
 - **La page ne s'ouvre pas** → ouvre ton navigateur et va sur <http://127.0.0.1:7860>.
 - **Transcription farfelue** → force la langue sur *Français* et passe la qualité sur *Précise*.
