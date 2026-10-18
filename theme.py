@@ -103,10 +103,17 @@ CSS = """
 /* ---- Trame générale : une colonne étroite, beaucoup de marge ---- */
 html, body, gradio-app { background: #fdfaf8 !important; }
 .gradio-container {
+  /* Colonne de largeur fixe, recentrée quelle que soit la taille de la
+     fenêtre : `margin: auto` répartit l'espace restant à parts égales. */
+  width: 100% !important;
   max-width: 940px !important;
-  padding: 0 32px 80px !important;
+  margin: 0 auto !important;
+  padding: 0 clamp(16px, 4vw, 32px) 80px !important;
   background: #fdfaf8;
 }
+/* Le parent direct peut aligner son contenu à gauche : on le neutralise. */
+gradio-app, gradio-app > div, .gradio-container > .main,
+.gradio-container > .wrap { margin-left: auto !important; margin-right: auto !important; }
 footer { display: none !important; }
 
 /* ---- Bandeau : l'emblème, le titre déco, un filet ---- */
@@ -143,6 +150,18 @@ span[data-testid="block-info"], .gradio-container label span,
 /* ---- Colonnes séparées par un filet vertical, comme une mise en page de magazine ---- */
 #colonne-gauche { padding-right: 38px; border-right: 1px solid #f1e7e1; }
 #colonne-droite { padding-left: 38px; }
+
+/* Fenêtre étroite : les colonnes s'empilent, le filet vertical n'a plus de
+   sens, et le bandeau se resserre pour que tout reste lisible. */
+@media (max-width: 860px) {
+  #colonne-gauche {
+    padding-right: 0; border-right: none;
+    border-bottom: 1px solid #f1e7e1; padding-bottom: 34px; margin-bottom: 34px;
+  }
+  #colonne-droite { padding-left: 0; }
+  #entete { padding: 44px 0 28px; }
+  #filet-haut { margin: 8px 0 32px; }
+}
 
 /* ---- Étiquettes : du texte nu, sans pastille ni cadre ---- */
 .block > label, span[data-testid="block-info"] {
